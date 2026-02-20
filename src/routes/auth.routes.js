@@ -1,15 +1,18 @@
 const express = require('express');
 const { body } = require('express-validator');
-const { register, login } = require('../controllers/auth.controller');
+const { register, login, profile } = require('../controllers/auth.controller');
 const protect = require('../middlewares/auth.middleware');
 const validateFields = require('../middlewares/validation.middleware');
 
 const router = express.Router();
 
+// Registro
 router.post(
   '/register',
   [
-    body('nombre').notEmpty().withMessage('Nombre obligatorio'),
+    body('nombre')
+      .notEmpty().withMessage('Nombre obligatorio')
+      .matches(/^[A-Za-z\s]+$/).withMessage('El nombre solo puede contener letras y espacios'),
     body('email').isEmail().withMessage('Email inválido'),
     body('password')
       .isLength({ min: 6 })
@@ -19,6 +22,7 @@ router.post(
   register
 );
 
+// Login
 router.post(
   '/login',
   [
@@ -29,6 +33,7 @@ router.post(
   login
 );
 
-router.get('/profile', protect, require('../controllers/auth.controller').profile);
+// Perfil protegido
+router.get('/profile', protect, profile);
 
 module.exports = router;
