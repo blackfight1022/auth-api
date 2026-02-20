@@ -1,0 +1,26 @@
+# Ignorar dependencias
+node_modules/
+
+# Variables de entorno
+.env
+
+# Archivos de logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Carpeta de compilación / builds
+dist/
+build/
+
+# Configuraciones de nodemon
+nodemon.json
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Cache y archivos temporales
+*.swp
+*.tmp
