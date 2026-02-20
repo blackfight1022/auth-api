@@ -101,10 +101,34 @@ Configura variables de entorno: baseUrl = http://localhost:3000.
 Prueba endpoints en este orden:
 
 POST /api/register → Crear usuario
+Content-Type: application/json
+
+{
+  "email": "jesus@gmail.com",
+  "password": "123456"
+}
 
 POST /api/login → Obtener token JWT
+Content-Type: application/json
+
+{
+  "email": "jesus@.gmailcom",
+  "password": "123456"
+}
+
+
+Respuesta:
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6..."
+}
+
+
 
 GET /api/profile → Probar acceso con token
+Headers:
+
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6...
 
 
 Buenas prácticas:
